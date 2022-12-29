@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
     paddingTop: Platform.OS == 'ios' ? 64 : 50 ,
   },
   title:{
-    color: '#b5b5b5',
+    color: '#dedede',
     paddingHorizontal: 24,
     fontSize: 40,
     fontWeight: '800',
@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
     marginTop: 80,
   },
   text:{
-    color: '#b5b5b5',
+    color: '#dedede',
     paddingHorizontal: 24,
     fontSize: 18,
     fontWeight: '500',
@@ -49,7 +49,7 @@ export const styles = StyleSheet.create({
   buttonFont:{
     fontWeight: '900',
     fontSize: 18,
-    color: '#b5b5b5',
+    color: '#dedede',
     marginRight: 10
   }
 })

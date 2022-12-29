@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 24,
   },
   subtitle:{
-    color: '#b5b5b5',
+    color: '#dedede',
     fontSize: 24,
     fontWeight: '500',
     marginBottom: 8

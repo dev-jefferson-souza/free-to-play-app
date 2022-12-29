@@ -3,12 +3,12 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 import { styles } from "./styles"
 
-interface ImageLargeProps {
+interface CardLargeProps {
     title: string,
     thumbnail: string,
 }
 
-export const ImageLarge = ({title, thumbnail} : ImageLargeProps) => {
+export const ImageLarge = ({title, thumbnail} : CardLargeProps) => {
 
     return(
         <TouchableOpacity style={styles.container} activeOpacity={0.85}>

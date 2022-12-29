@@ -5,7 +5,9 @@ export interface dataResponseProps  {
     genre: string,
     thumbnail: string,
     id: number,
-    short_description: string,
+    description: string,
     release_date: string,
-    game_url: string
+    game_url: string,
+    screenshots: string
+
 }
