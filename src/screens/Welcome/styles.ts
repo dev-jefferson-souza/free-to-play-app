@@ -4,8 +4,7 @@ export const styles = StyleSheet.create({
   container: {
     height: '100%',
     width:'100%',
-    //backgroundColor: '#0d0d0f',
-    backgroundColor: '#000',
+    backgroundColor: '#0d0d0f',
     alignItems:'center',
 
     paddingTop: Platform.OS == 'ios' ? 64 : 50 ,
@@ -37,7 +36,7 @@ export const styles = StyleSheet.create({
     bottom: 0
   },
   button:{
-    backgroundColor:'#000',
+    backgroundColor:'#0d0d0f',
     position:"absolute",
     bottom: 40,
 

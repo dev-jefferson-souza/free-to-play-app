@@ -20,12 +20,12 @@ export const ImageLarge = ({title, thumbnail} : CardLargeProps) => {
             />
             <LinearGradient 
                 style={styles.shadow}
-                locations={[0.1, 0.65]}
+                locations={[0.5, 1]}
                 colors={['#000', 'rgba(255, 255, 255, 0)']}
             />
             <LinearGradient 
                 style={styles.shadow}
-                locations={[1, 0]}
+                locations={[0.25, 0.35]}
                 colors={['#000', 'rgba(255, 255, 255, 0)']}
             />
             <Text style={styles.title}>{title}</Text>   
