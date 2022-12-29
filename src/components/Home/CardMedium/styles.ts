@@ -2,60 +2,61 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
     container: {
-        width: 370,
-        height: 200,
+        width: 160,
+        height: 240,
+        zIndex: 2,
     },
     shadow: {
         height: '100%',
         width:'100%',
-        borderRadius:22,
+        borderRadius:12,
         opacity: 0.5,
         position: "absolute",
         bottom: 0
     },
     image:{
-        width: '100%', height: '100%', borderRadius: 24
+        width: '100%',
+        height: '100%',
+        borderRadius: 12
     },
     title:{
-        fontSize: 24,
+        fontSize: 18,
+        width:'100%',
+        textAlign:"center",
         fontWeight: "800",
         color: '#fff',
         position: "absolute",
         top: 10,
-        left: 16
     },
     boxPublisher:{
         position: "absolute",
-        bottom: 40,
-        left: 16,
+        bottom: 50,
+        width: '100%',
         flexDirection:"row",
     },
-    publisher:{
-        color: '#fff',
-        fontSize: 16,
-        fontWeight: '700',
-        marginRight: 8
-    },
-    publisherContent: {
+    genreContent: {
         color: '#fff',
         fontSize: 13,
         fontWeight: '600',
-        alignSelf: "center"
+        alignSelf: "center",
+        backgroundColor:'#000',
+        paddingHorizontal: 10,
+        paddingVertical: 1,
+        borderRadius: 20,
     },
-    subtitle2:{
-        width: 70,
+    publisherContent: {
         color: '#fff',
-        fontSize: 16,
-        fontWeight: '700',
-
-        position: "absolute",
-        bottom: 20,
-        left: 16
+        fontSize: 10,
+        fontWeight: '600',
+        textAlign: "center",
+        width:'100%'
     },
     boxRow:{
+        width: '100%',
+        paddingHorizontal: 8,
         position: "absolute",
         bottom: 16,
-        left: 16,
+        justifyContent:"center",
         flexDirection:"row",
     }
   })

@@ -1,29 +1,33 @@
-import { View, Text, Image, TouchableOpacity, ScrollView, FlatList } from "react-native"
+import { View, Text, ScrollView, FlatList } from "react-native"
 import React from "react"
 import { CardLarge } from "../../components/Home/CardLarge/CardLarge"
 import { Logo } from "../../components/Logo/Logo"
 import { Statusbar } from "../../components/Statusbar/Statusbar"
 import { styles } from "./styles"
 import ftpService from "../../api/service/FreeToPlayService"
+import { CardMedium } from "../../components/Home/CardMedium/CardMedium"
+import { GameContext } from "../../context/GameContext"
 
-interface dataResponseProps {
+interface dataResponseProps  {
     title: string,
     publisher: string
     genre: string,
     thumbnail: string,
     id: number
-
 }
 
-export const Home = () => {
+export const Home = ({navigation}) => {
+
+    const { setGame } = React.useContext(GameContext)
 
     React.useEffect(() => {
-        getGames()
+        getGames(),
+        getCategory()
     }, [])
 
-    const [dataCardLarge, setDataCardLarge] = React.useState([{}])
+    const [dataCardLarge, setDataCardLarge] = React.useState<any>([])
+    const [dataFPS, setDataFPS] = React.useState()
     
-
     const getGames = async () => {
       
         const response1 =  await ftpService.getGame(212)
@@ -32,7 +36,7 @@ export const Home = () => {
         const response4 =  await ftpService.getGame(261)
         const response5 = await ftpService.getGame(540)
 
-        const dataResponse : Array<any> = ([
+        const dataResponse : Array<dataResponseProps> = ([
             response1.data,
             response2.data,
             response3.data,
@@ -42,8 +46,17 @@ export const Home = () => {
         setDataCardLarge(dataResponse)
     }
 
+    const getCategory = async () => {
+        const response =  await ftpService.getCategory('shooter')
+        const dataResponse = (response.data)
+        setDataFPS(dataResponse)
+    }
 
-    
+    const goGameInfo = (id) => {
+        navigation.navigate("GamePage")  
+        setGame(id)   
+    }
+
     return(
     <View style={styles.container}>
         <Statusbar/>
@@ -52,11 +65,33 @@ export const Home = () => {
         </View>
         <Text style={styles.subtitle}>How about something new?</Text>
             <FlatList
+                initialNumToRender={3}
+                style={{height: 0}}
                 horizontal={true}
                 data={dataCardLarge}
                 renderItem={({item, index, separators}) => (
                     <ScrollView horizontal={true}>
-                        <CardLarge
+                            <CardLarge
+                                onPressBtn={() => goGameInfo(item.id)}
+                                id={item.id}
+                                title={item.title}
+                                genre={item.genre}
+                                publisher={item.publisher}
+                                thumbnail={item.thumbnail}
+                            />
+                        <View style={{marginHorizontal: 7}}/>
+                    </ScrollView>
+                )}
+            />
+            <Text style={styles.subtitle}>Do you like FPS?</Text>
+            <FlatList
+                initialNumToRender={3}
+                horizontal={true}
+                data={dataFPS}
+                renderItem={({item, index, separators}) => (
+                    <ScrollView horizontal={true}>
+                        <CardMedium
+                            onPressBtn={() => goGameInfo(item.id)}
                             id={item.id}
                             title={item.title}
                             genre={item.genre}

@@ -1,9 +1,10 @@
-import { Home } from './src/screens/Home/Home';
-import { Welcome } from './src/screens/Welcome/Welcome';
+import { GameProvider } from './src/context/GameContext';
+import { Routes } from './src/routes/routes';
 
 export default function App() {
   return (
-    // <Welcome/>
-    <Home/>
+    <GameProvider>
+      <Routes/>
+    </GameProvider>
   );
 }

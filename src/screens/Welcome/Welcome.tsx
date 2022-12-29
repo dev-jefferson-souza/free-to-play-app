@@ -6,7 +6,14 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { styles } from "./styles"
 
 
-export const Welcome = () => {
+export const Welcome = ({navigation}) => {
+    
+    const start = () => {
+        navigation.reset({
+            index: 0,
+            routes: [{name: "Home"}]
+          })
+    }
 
     return(
     <View style={styles.container}>
@@ -18,7 +25,7 @@ export const Welcome = () => {
         <Text style={styles.text}>Here you can find many free games to play with your friends</Text>
         <Image source={Games} style={styles.backgroundImage}/>
         <View style={styles.button}>
-            <TouchableOpacity activeOpacity={0.7} style={{flexDirection:"row"}} onPress={() => console.log('Foi para a home')}>
+            <TouchableOpacity activeOpacity={0.7} style={{flexDirection:"row"}} onPress={() => start()}>
                 <Text style={styles.buttonFont}>START</Text>
                 <MaterialIcons name="keyboard-arrow-right" size={24} color="#fff" />
             </TouchableOpacity>

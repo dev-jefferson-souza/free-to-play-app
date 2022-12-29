@@ -6,14 +6,12 @@ function getGame(id: number) : Promise<AxiosResponse> {
     return api.get('https://www.freetogame.com/api/game?id=' + id);
 }
 
+function getCategory(category: string) : Promise<AxiosResponse> {
+    return api.get('https://www.freetogame.com/api/games?category=' + category);
+}
+
 const ftpService = {
     getGame,
-    // get,
-    // getReceitaTOTAL,
-    // getDespesaTOTAL,
-    // getMovimentacaoPorUsuario,
-    // create,
-    // update,
-    // remove
+    getCategory
 }
 export default ftpService

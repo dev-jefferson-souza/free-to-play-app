@@ -1,4 +1,4 @@
-import { View, Text, Image, TouchableOpacity, TouchableOpacityProps } from "react-native"
+import { View, Text, Image, TouchableOpacity } from "react-native"
 import { LinearGradient } from 'expo-linear-gradient';
 
 import { styles } from "./styles"
@@ -12,7 +12,7 @@ interface CardLargeProps {
     onPressBtn: any
 }
 
-export const CardLarge = ({title, publisher, genre, id, thumbnail, onPressBtn} : CardLargeProps) => {
+export const CardMedium = ({title, publisher, genre, id, thumbnail, onPressBtn} : CardLargeProps) => {
 
     return(
         <TouchableOpacity style={styles.container} activeOpacity={0.85} onPress={() => onPressBtn()}>
@@ -34,16 +34,10 @@ export const CardLarge = ({title, publisher, genre, id, thumbnail, onPressBtn} :
             />
             <Text style={styles.title}>{title}</Text>
             <View style={styles.boxPublisher}>
-                <View style={{flexDirection: "row"}}>
-                    <Text style={styles.publisher}>Publisher:</Text>
-                    <Text style={styles.publisherContent}>{publisher}</Text>
-                </View>
+                <Text style={styles.publisherContent} numberOfLines={1}>{publisher}</Text> 
             </View>
             <View style={styles.boxRow}>
-                <View style={{flexDirection: "row"}}>
-                    <Text style={styles.publisher}>Genre:</Text>
-                    <Text style={styles.publisherContent}>{genre}</Text>
-                </View>
+                <Text numberOfLines={1} style={styles.genreContent}>{genre}</Text>
             </View>
         </TouchableOpacity>
     )
