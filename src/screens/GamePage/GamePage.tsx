@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, FlatList, TouchableHighlight } from "react-native"
+import { View, Text, ScrollView, FlatList, TouchableHighlight, Linking  } from "react-native"
 import React from "react"
 import { Statusbar } from "../../components/Statusbar/Statusbar"
 import { styles } from "./styles"
@@ -9,6 +9,7 @@ import { GameContext } from "../../context/GameContext"
 import { Loading } from "../../components/Loading/Loading"
 import { Screenshots } from "../../components/GamePage/Screenshots/Screenshots"
 import { InfoLine } from "../../components/GamePage/InfoLine/InfoLine"
+import { Button } from "../../components/GamePage/Button/Button"
 
 
 export const GamePage = () => {
@@ -60,46 +61,48 @@ export const GamePage = () => {
         )
     }else{
         return(
-            <ScrollView style={styles.container}>
+            <View>
                 <Statusbar/>
-                <ImageLarge thumbnail={gameInfo.thumbnail} title={gameInfo.title}/>
-                <View style={{marginVertical:8}}/>
-                <Text style={styles.subtitle}>Description</Text>
-                <Text onPress={() => handleNumberLines()} style={styles.descriptionText} numberOfLines={numberLines}>{gameInfo.description}</Text>
-                <View
-                    style={{paddingHorizontal:24, marginBottom: 16}}
-                >
-                    <FlatList
-                        horizontal={true}
-                        data={screenshots}
-                        renderItem={({item, index, separators}) => (
-                            <ScrollView horizontal={true}>
-                                <Screenshots screenshots={item.image}/>
-                                <View style={{marginRight: 12}}/>
-                            </ScrollView>
-                        )}
-                    />
-                </View>
-                <View style={{width: '100%', paddingHorizontal: 32, marginBottom: 48}}>
-                    <View style={{marginBottom: 24}}/>
-                    <Text style={styles.minimumText}>Minimum System Requirements</Text>
-                    <InfoLine subtitle={'OS:'} content={systemRequirement.os} numberOfLines={1}/>
-                    <InfoLine subtitle={'Memory:'} content={systemRequirement.memory} numberOfLines={1}/>
-                    <TouchableHighlight onPress={() => handleNumberLinesProcessor()}>
-                        <InfoLine subtitle={'Processor:'} content={systemRequirement.processor} numberOfLines={numberLinesProcessor}/>
-                    </TouchableHighlight>
-                    <TouchableHighlight onPress={() => handleNumberLinesGraphics()}>
-                        <InfoLine subtitle={'Graphics:'} content={systemRequirement.graphics} numberOfLines={numberLinesGraphics}/>
-                    </TouchableHighlight>
+                <ScrollView style={styles.container}>
+                    <ImageLarge thumbnail={gameInfo.thumbnail} title={gameInfo.title}/>
+                    <View style={{marginVertical:8}}/>
+                    <Text style={styles.subtitle}>Description</Text>
+                    <Text onPress={() => handleNumberLines()} style={styles.descriptionText} numberOfLines={numberLines}>{gameInfo.description}</Text>
+                    <View
+                        style={{paddingHorizontal:24, marginBottom: 16}}
+                    >
+                        <FlatList
+                            horizontal={true}
+                            data={screenshots}
+                            renderItem={({item, index, separators}) => (
+                                <ScrollView horizontal={true}>
+                                    <Screenshots screenshots={item.image}/>
+                                    <View style={{marginRight: 12}}/>
+                                </ScrollView>
+                            )}
+                        />
+                    </View>
+                    <View style={{width: '100%', paddingHorizontal: 32, marginBottom: 48}}>
+                        <View style={{marginBottom: 24}}/>
+                        <Text style={styles.minimumText}>Minimum System Requirements</Text>
+                        <InfoLine subtitle={'OS:'} content={systemRequirement.os} numberOfLines={1}/>
+                        <InfoLine subtitle={'Memory:'} content={systemRequirement.memory} numberOfLines={1}/>
+                        <TouchableHighlight onPress={() => handleNumberLinesProcessor()}>
+                            <InfoLine subtitle={'Processor:'} content={systemRequirement.processor} numberOfLines={numberLinesProcessor}/>
+                        </TouchableHighlight>
+                        <TouchableHighlight onPress={() => handleNumberLinesGraphics()}>
+                            <InfoLine subtitle={'Graphics:'} content={systemRequirement.graphics} numberOfLines={numberLinesGraphics}/>
+                        </TouchableHighlight>
 
-                    <View style={{marginBottom: 24}}/>
-                    <Text style={styles.minimumText}>About</Text>
-                    <InfoLine subtitle={'Publisher:'} content={gameInfo.publisher} numberOfLines={1}/>
-                    <InfoLine subtitle={'Developer:'} content={gameInfo.developer} numberOfLines={1}/>
-                    <InfoLine subtitle={'Release Date:'} content={gameInfo.release_date} numberOfLines={1}/>
-                </View>
-
-            </ScrollView>
+                        <View style={{marginBottom: 24}}/>
+                        <Text style={styles.minimumText}>About</Text>
+                        <InfoLine subtitle={'Publisher:'} content={gameInfo.publisher} numberOfLines={1}/>
+                        <InfoLine subtitle={'Developer:'} content={gameInfo.developer} numberOfLines={1}/>
+                        <InfoLine subtitle={'Release Date:'} content={gameInfo.release_date} numberOfLines={1}/>
+                    </View>
+                </ScrollView>
+                <Button onPress={() => Linking.openURL(gameInfo.game_url)}/>
+            </View>
         )
     }
 }
