@@ -5,7 +5,7 @@ export const GameContext = React.createContext();
 export const GameProvider = ({children}) => {
 
  
-    const [game, setGame] = React.useState();
+    const [game, setGame] = React.useState(null);
 
     return (
         <GameContext.Provider value={{game, setGame}}>

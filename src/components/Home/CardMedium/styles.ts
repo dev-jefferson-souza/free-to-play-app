@@ -31,6 +31,7 @@ export const styles = StyleSheet.create({
     boxPublisher:{
         position: "absolute",
         bottom: 50,
+        paddingHorizontal:4,
         width: '100%',
         flexDirection:"row",
     },
@@ -46,7 +47,7 @@ export const styles = StyleSheet.create({
     },
     publisherContent: {
         color: '#fff',
-        fontSize: 10,
+        fontSize: 14,
         fontWeight: '600',
         textAlign: "center",
         width:'100%'

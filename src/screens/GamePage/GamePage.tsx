@@ -6,9 +6,10 @@ import { ImageLarge } from "../../components/GamePage/CardLarge/ImageLarge"
 import ftpService from "../../api/service/FreeToPlayService"
 import { dataResponseProps } from "./GameProps"
 import { GameContext } from "../../context/GameContext"
+import { Loading } from "../../components/Loading/Loading"
 
 
-export const GamePage = (id) => {
+export const GamePage = () => {
 
     const { game } = React.useContext(GameContext)
     
@@ -29,11 +30,17 @@ export const GamePage = (id) => {
   
     const [gameInfo, setGameInfo] = React.useState<dataResponseProps>(placeHolderObj)
 
-    return(
-    <View style={styles.container}>
-        <Statusbar/>
-        <ImageLarge thumbnail={gameInfo.thumbnail} title={gameInfo.title}/>
-        <Text></Text>
-    </View>
-    )
+    if(gameInfo.title == ''){
+        return(
+            <Loading visible={true}/>
+        )
+    }else{
+        return(
+        <View style={styles.container}>
+            <Statusbar/>
+            <ImageLarge thumbnail={gameInfo.thumbnail} title={gameInfo.title}/>
+            <Text></Text>
+        </View>
+        )
+    }
 }
