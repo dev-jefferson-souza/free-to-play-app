@@ -23,7 +23,8 @@ export const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '500',
     marginTop: 100,
-    textAlign: "center"
+    textAlign: "center",
+    zIndex:2,
   },
   backgroundImage:{
     width:'100%',
@@ -36,7 +37,7 @@ export const styles = StyleSheet.create({
     bottom: 0
   },
   button:{
-    backgroundColor:'#0d0d0f',
+    backgroundColor:'#000',
     position:"absolute",
     bottom: 40,
 
@@ -50,5 +51,12 @@ export const styles = StyleSheet.create({
     fontSize: 18,
     color: '#dedede',
     marginRight: 10
-  }
+  },
+  shadow: {
+    height: 550,
+    width:'100%',
+    opacity: 1,
+    position: "absolute",
+    bottom: 0
+},
 })

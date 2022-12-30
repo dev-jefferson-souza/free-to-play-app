@@ -7,7 +7,7 @@ function getGame(id: number) : Promise<AxiosResponse> {
 }
 
 function getCategory(category: string) : Promise<AxiosResponse> {
-    return api.get('https://www.freetogame.com/api/games?category=' + category);
+    return api.get('https://www.freetogame.com/api/games?platform=pc&category=' + category);
 }
 
 const ftpService = {

@@ -33,7 +33,7 @@ export const Home = ({navigation}) => {
     const getGames = async () => {
       
         const response1 =  await ftpService.getGame(212)
-        const response2 =  await ftpService.getGame(521)
+        const response2 =  await ftpService.getGame(188)
         const response3 =  await ftpService.getGame(523)
         const response4 =  await ftpService.getGame(261)
         const response5 = await ftpService.getGame(540)
