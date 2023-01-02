@@ -1,8 +1,8 @@
 import { TouchableOpacity, View } from "react-native"
-import { SimpleLineIcons } from '@expo/vector-icons'; 
+import { FontAwesome } from '@expo/vector-icons'; 
 
 
-export const Button = ({onPress}) => {
+export const ButtonFilter = ({onPress}) => {
 
     return(
         <TouchableOpacity style={{position: 'absolute', right: 32, bottom: 32}} activeOpacity={0.5} onPress={() => onPress()}>
@@ -15,8 +15,7 @@ export const Button = ({onPress}) => {
                 borderRadius: 100
     
                 }}>
-                
-                <SimpleLineIcons name="game-controller" size={36} color="#fff" />
+                <FontAwesome name="filter" size={36} color="#fff"/>
             </View>
         </TouchableOpacity>
     )

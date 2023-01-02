@@ -9,8 +9,7 @@ import { GameContext } from "../../context/GameContext"
 import { Loading } from "../../components/Loading/Loading"
 import { Screenshots } from "../../components/GamePage/Screenshots/Screenshots"
 import { InfoLine } from "../../components/GamePage/InfoLine/InfoLine"
-import { Button } from "../../components/GamePage/Button/Button"
-
+import { ButtonPlay } from "../../components/GamePage/Button/ButtonPlay"
 
 export const GamePage = () => {
 
@@ -101,7 +100,7 @@ export const GamePage = () => {
                         <InfoLine subtitle={'Release Date:'} content={gameInfo.release_date} numberOfLines={1}/>
                     </View>
                 </ScrollView>
-                <Button onPress={() => Linking.openURL(gameInfo.game_url)}/>
+                <ButtonPlay onPress={() => Linking.openURL(gameInfo.game_url)}/>
             </View>
         )
     }

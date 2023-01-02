@@ -8,10 +8,6 @@ export const Routes = () => {
 
   const { auth } = React.useContext(GameContext)
   
-  React.useEffect(() => {
-    console.log(auth)
-  })
-
   return(
     auth ? <PrivateRoute/> : <PublicRoute/> 
   )

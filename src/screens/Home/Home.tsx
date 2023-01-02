@@ -8,6 +8,8 @@ import ftpService from "../../api/service/FreeToPlayService"
 import { CardMedium } from "../../components/Home/CardMedium/CardMedium"
 import { GameContext } from "../../context/GameContext"
 import { Loading } from "../../components/Loading/Loading"
+import { ButtonFilter } from "../../components/Home/Button/ButtonFilter"
+import { ModalFilter } from "../../components/Home/Modal/ModalFilter"
 
 interface dataResponseProps  {
     title: string,
@@ -20,7 +22,6 @@ interface dataResponseProps  {
 export const Home = ({navigation}) => {
 
     const { setGame } = React.useContext(GameContext)
-
     React.useEffect(() => {
         setGame(null)
         getGames(),
@@ -29,6 +30,8 @@ export const Home = ({navigation}) => {
 
     const [dataCardLarge, setDataCardLarge] = React.useState<any>(null)
     const [dataFPS, setDataFPS] = React.useState()
+    const [isSelectedModal, setIsSelectedModal] = React.useState(false);
+
     
     const getGames = async () => {
       
@@ -71,6 +74,10 @@ export const Home = ({navigation}) => {
         return(
         <View style={styles.container}>
             <Statusbar/>
+            <ModalFilter
+                isSelectedModal={isSelectedModal}
+                setIsSelectedModal={setIsSelectedModal}
+            />
             <View style={{width: 75, height: 75, marginBottom: 20, alignSelf:"center"}}>
                 <Logo/>
             </View>
@@ -113,6 +120,7 @@ export const Home = ({navigation}) => {
                         </ScrollView>
                     )}
                 />
+                <ButtonFilter onPress={() => setIsSelectedModal(true)}/>
         </View>
         )
     }

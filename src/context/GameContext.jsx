@@ -14,7 +14,6 @@ export const GameProvider = ({children}) => {
           const value = await AsyncStorage.getItem('@Auth')
           if(value !== null) {
             setAuth(value)
-            console.log(auth)
           }
         } catch(err) {
           console.log(err)
@@ -24,7 +23,7 @@ export const GameProvider = ({children}) => {
 
     React.useEffect(() => {
         getData()
-    })
+    }, [auth])
 
     return (
         <GameContext.Provider value={{game, setGame, auth, setAuth}}>
