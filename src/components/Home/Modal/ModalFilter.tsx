@@ -27,9 +27,9 @@ export const ModalFilter = ({
 
     const mountURI = () => {
         if(category == "" && lowSpec != "" ||  perspective != ""){
-            setURI(`/filter?tag=${lowSpec}${perspective}`)
+            setURI(`/filter?tag=${lowSpec}${perspective}&platform=pc`)
         }else if(category !== ""){
-            setURI(`/filter?tag=${category}.${lowSpec}${perspective}`)
+            setURI(`/filter?tag=${category}.${lowSpec}${perspective}&platform=pc`)
         }else if(category == ""){
              setURI('/games')
         }
@@ -38,7 +38,6 @@ export const ModalFilter = ({
     const filtering = async () => {
         await mountURI()
         await setCategoryURI(uri)
-        console.log(uri)
         onPress()
         closeModal()
     }

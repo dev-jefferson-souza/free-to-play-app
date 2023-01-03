@@ -10,6 +10,7 @@ import { GameContext } from "../../context/GameContext"
 import { Loading } from "../../components/Loading/Loading"
 import { ButtonFilter } from "../../components/Home/Button/ButtonFilter"
 import { ModalFilter } from "../../components/Home/Modal/ModalFilter"
+import { ButtonRandom } from "../../components/Home/Button/ButtonRandom"
 
 interface dataResponseProps  {
     title: string,
@@ -41,13 +42,7 @@ export const Home = ({navigation}) => {
         const response4 =  await ftpService.getGame(261)
         const response5 = await ftpService.getGame(540)
 
-        const dataResponse : Array<dataResponseProps> = ([
-            response1.data,
-            response2.data,
-            response3.data,
-            response4.data,
-            response5.data
-        ])
+        const dataResponse : Array<dataResponseProps> = ([ response1.data, response2.data, response3.data, response4.data, response5.data ])
         setDataCardLarge(dataResponse)
     }
 
@@ -58,8 +53,22 @@ export const Home = ({navigation}) => {
     }
 
     const goGameInfo = (id) => {
+        setGame(id)
         navigation.navigate("GamePage")  
-        setGame(id)   
+    }
+
+    const randomGame = async () => {
+        const randomId = Math.floor(Math.random() * (550 - 1 + 1) + 1)
+        try{
+            const response = await ftpService.getGame(randomId)
+            if(response.status == 200){
+                goGameInfo(randomId)
+            }else if(response.status == 404){
+                randomGame()
+            }
+        }catch (err){
+            randomGame()
+        }
     }
 
 
@@ -122,6 +131,7 @@ export const Home = ({navigation}) => {
                     )}
                 />
                 <ButtonFilter onPress={() => setIsSelectedModal(true)}/>
+                <ButtonRandom onPress={() => randomGame()}/>
         </View>
         )
     }

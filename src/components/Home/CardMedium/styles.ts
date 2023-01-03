@@ -40,10 +40,6 @@ export const styles = StyleSheet.create({
         fontSize: 13,
         fontWeight: '600',
         alignSelf: "center",
-        backgroundColor:'#000',
-        paddingHorizontal: 10,
-        paddingVertical: 1,
-        borderRadius: 20,
     },
     publisherContent: {
         color: '#fff',

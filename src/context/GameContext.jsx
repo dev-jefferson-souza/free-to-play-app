@@ -5,11 +5,6 @@ export const GameContext = React.createContext();
 
 export const GameProvider = ({children}) => {
 
-    React.useEffect(() => {
-      console.log(categoryURI)
-  })
-
- 
     const [game, setGame] = React.useState(null);
     const [categoryURI, setCategoryURI] = React.useState(null);
     const [auth, setAuth] = React.useState(false)

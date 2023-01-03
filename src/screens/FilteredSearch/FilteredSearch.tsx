@@ -1,6 +1,5 @@
-import { View, FlatList, Text } from "react-native"
+import { View, FlatList, Text, ScrollView } from "react-native"
 import React from "react"
-import { Logo } from "../../components/Logo/Logo"
 import { Statusbar } from "../../components/Statusbar/Statusbar"
 import { styles } from "./styles"
 import ftpService from "../../api/service/FreeToPlayService"
@@ -53,11 +52,8 @@ export const FilteredSearch = ({navigation}) => {
         return(
             <View style={styles.container}>
                 <Statusbar/>
-                <View style={{width: 75, height: 75, marginBottom: 20, alignSelf:"center"}}>
-                    <Logo/>
-                </View>
-              
-              <View style={{alignItems:"center", marginBottom:120}}>
+                <View style={{alignItems:"center"}}>
+                    <Text style={{...styles.subtitle, marginBottom: 32, marginTop: 24 ,paddingHorizontal: 24}}>These were the results found</Text>
                     <FlatList
                         numColumns={4}
                         initialNumToRender={10}
@@ -76,7 +72,7 @@ export const FilteredSearch = ({navigation}) => {
                             </View>
                         )}
                     />
-              </View>
+                </View>
             </View>
         )
     }

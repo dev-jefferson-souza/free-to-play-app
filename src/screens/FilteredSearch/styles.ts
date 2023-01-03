@@ -4,6 +4,7 @@ export const styles = StyleSheet.create({
   container: {
     height: '100%',
     width:'100%',
+    alignItems:"center",
     backgroundColor: '#0d0d0f',
     paddingTop: Platform.OS == 'ios' ? 64 : 50 ,
   },
