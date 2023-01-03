@@ -5,8 +5,13 @@ export const GameContext = React.createContext();
 
 export const GameProvider = ({children}) => {
 
+    React.useEffect(() => {
+      console.log(categoryURI)
+  })
+
  
     const [game, setGame] = React.useState(null);
+    const [categoryURI, setCategoryURI] = React.useState(null);
     const [auth, setAuth] = React.useState(false)
 
     const getData = async () => {
@@ -26,7 +31,7 @@ export const GameProvider = ({children}) => {
     }, [auth])
 
     return (
-        <GameContext.Provider value={{game, setGame, auth, setAuth}}>
+        <GameContext.Provider value={{game, setGame, auth, setAuth, categoryURI, setCategoryURI}}>
             {children}
         </GameContext.Provider>
     )

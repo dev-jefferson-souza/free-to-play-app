@@ -77,6 +77,7 @@ export const Home = ({navigation}) => {
             <ModalFilter
                 isSelectedModal={isSelectedModal}
                 setIsSelectedModal={setIsSelectedModal}
+                onPress={() => navigation.navigate("FilteredSearch")}
             />
             <View style={{width: 75, height: 75, marginBottom: 20, alignSelf:"center"}}>
                 <Logo/>

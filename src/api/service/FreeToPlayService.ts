@@ -10,8 +10,13 @@ function getCategory(category: string) : Promise<AxiosResponse> {
     return api.get('https://www.freetogame.com/api/games?platform=pc&category=' + category);
 }
 
+function getFiltered(uri: string) : Promise<AxiosResponse> {
+    return api.get('https://www.freetogame.com/api' + uri);
+}
+
 const ftpService = {
     getGame,
-    getCategory
+    getCategory,
+    getFiltered
 }
 export default ftpService

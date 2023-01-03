@@ -10,24 +10,37 @@ import React from "react";
 import { styles } from "./styles";
 import { Ionicons } from '@expo/vector-icons'; 
 import { ButtonSearch } from "../Button/ButtonSearch";
+import { GameContext } from "../../../context/GameContext";
  
   
 export const ModalFilter = ({
     isSelectedModal,
-    setIsSelectedModal
+    setIsSelectedModal,
+    onPress
   }) => {
   
     const [uri, setURI] = React.useState<string>("/games")
     const [category, setCategory] = React.useState<string>("")
     const [lowSpec, setLowSpec] = React.useState<string>("")
     const [perspective, setPerspective] = React.useState<string>("")
+    const { setCategoryURI } = React.useContext(GameContext)
 
     const mountURI = () => {
-        if(category == ""){
+        if(category == "" && lowSpec != "" ||  perspective != ""){
             setURI(`/filter?tag=${lowSpec}${perspective}`)
-        }else{
+        }else if(category !== ""){
             setURI(`/filter?tag=${category}.${lowSpec}${perspective}`)
+        }else if(category == ""){
+             setURI('/games')
         }
+    }
+
+    const filtering = async () => {
+        await mountURI()
+        await setCategoryURI(uri)
+        console.log(uri)
+        onPress()
+        closeModal()
     }
 
     const closeModal = () => {
@@ -39,13 +52,7 @@ export const ModalFilter = ({
     }
 
     const handleLowSpec = () => {
-        if(lowSpec == "low-spec"){
-            setLowSpec("")
-            console.log(lowSpec)
-        }else{
-            setLowSpec("low-spec")
-            console.log(lowSpec)
-        }
+        lowSpec == "low-spec" ? setLowSpec("") : setLowSpec("low-spec")
     }
 
     const selectCategory = (tag) => {
@@ -57,13 +64,14 @@ export const ModalFilter = ({
     }
 
     React.useEffect(() => {
-        console.log(uri)
-    }, [uri])
+        mountURI()
+    }, [category, lowSpec, perspective])
   
     return (
       <Modal
         animationType="slide"
         transparent={true}
+
         visible={isSelectedModal}
         onRequestClose={() => {
           closeModal()
@@ -158,7 +166,7 @@ export const ModalFilter = ({
                     trackColor={{ false: '#18181b', true: '#2e0b74'}}
                 />
             </View>
-            <ButtonSearch onPress={() => mountURI()}/>
+            <ButtonSearch onPress={() => filtering()}/>
         </View>
       </Modal>
     );

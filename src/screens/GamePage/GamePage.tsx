@@ -32,7 +32,7 @@ export const GamePage = () => {
         const requirement = response.data.minimum_system_requirements
         setGameInfo(response.data)
         setScreenshots(screenshots)
-        setSystemRequirement(requirement)
+        requirement != null ? setSystemRequirement(requirement) : setSystemRequirement({os: '?', processor:"?", memory:'?', graphics:'?'})
     }
   
     const [numberLines, setNumberLines] = React.useState<number>(3)
